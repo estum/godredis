@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "godredis"
-  spec.version       = "0.0.1"
+  spec.version       = "0.0.2"
   spec.authors       = ["Tõnis Simo"]
   spec.email         = ["anton.estum@gmail.com"]
   spec.summary       = %q{Godredis: bulk managing multiply Redis instances.}
@@ -19,6 +19,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.required_ruby_version = ">= 1.9.3"
+  
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
   spec.add_dependency "activesupport", ">= 3.0.0"

@@ -121,13 +121,17 @@ module Godredis
     
     private
     def say(action, &block)
-      result = _get_short_status_calling(&block)
+      result = get_short_status_calling(&block)
       puts "Redis [#{tag}]: #{action}... #{result}"
     end
     
-    def _get_short_status_calling(&block)
-      result = begin; block.call rescue nil; end
-      result == true ? '[OK]' : result || '[FAIL]'
+    def get_short_status_calling(&block)
+      result = begin
+        block.call
+      rescue => e
+        "[FAIL] #{e.message}"
+      end
+      result == true ? '[OK]' : result || "[FAIL]"
     end
   end
 end
